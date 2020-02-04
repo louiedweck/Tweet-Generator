@@ -23,6 +23,7 @@ def hist(text):
 
 
 def repeated_words(histogram):
+    '''Creates list of repeated words'''
     list_multiples = []
     for word, count in histogram.items():
         if count > 1:
@@ -31,10 +32,12 @@ def repeated_words(histogram):
 
 
 def unique_words(histogram):
+    ''' Returns amount of words occuring in text at least once '''
     return len(histogram)
 
 
 def frequency(word, histogram):
+    '''Returns count of single word usage throughout text '''
     return histogram[word]
 
 
