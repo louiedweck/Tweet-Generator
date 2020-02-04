@@ -31,15 +31,21 @@ def repeated_words(histogram):
 
 
 def unique_words(histogram):
-    unique_words = []
-    for word in histogram.items():
-        if word not in unique_words:
-            unique_words.append(word)
-    print(len(unique_words))
+    # unique_words = []
+    # for word in histogram.items():
+    #     if word not in unique_words:
+    #         unique_words.append(word)
+    # print(len(unique_words))
+    return len(histogram)
+
+
+def frequency(word, histogram):
+    return histogram[word]
 
 
 if __name__ == '__main__':
     words = get_all_words('book.txt')
     histogram = hist(words)
     print(repeated_words(histogram))
-    unique_words(histogram)
+    print(unique_words(histogram))
+    print(frequency("liberty", histogram))
