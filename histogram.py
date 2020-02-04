@@ -31,11 +31,6 @@ def repeated_words(histogram):
 
 
 def unique_words(histogram):
-    # unique_words = []
-    # for word in histogram.items():
-    #     if word not in unique_words:
-    #         unique_words.append(word)
-    # print(len(unique_words))
     return len(histogram)
 
 
