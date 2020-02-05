@@ -41,9 +41,34 @@ def frequency(word, histogram):
     return histogram[word]
 
 
+def get_index(word, histogram):
+    '''Checks indicies to see where word is. Helper function for histograms using lists of lists and tuples.  '''
+    current_index = 0
+    for item in histogram:
+        if item[0] == word:
+            return current_index
+        current_index += 1
+    return -1
+
+
+def listogram(text):
+    '''Histogram using lists of lists. You should be able to grab a coffee in the time this program takes to run on a tpsry with over 20,000 words. '''
+    listogram = []
+    lines = open(text, "r").readlines()
+    for line in lines:
+        for word in line.split():
+            index = get_index(word, listogram)
+            if index == -1:
+                listogram.append([word, 1])
+            else:
+                listogram[index][1] += 1
+    return listogram
+
+
 if __name__ == '__main__':
     words = get_all_words('book.txt')
     histogram = hist(words)
     print(repeated_words(histogram))
     print(unique_words(histogram))
     print(frequency("liberty", histogram))
+    # print(listogram('book.txt'))
