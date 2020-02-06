@@ -52,7 +52,7 @@ def get_index(word, histogram):
 
 
 def listogram(text):
-    '''Histogram using lists of lists. You should be able to grab a coffee in the time this program takes to run on a tpsry with over 20,000 words. '''
+    '''Histogram using lists of lists. You should be able to grab a coffee in the time this program takes to run on a text with over 20,000 words. '''
     listogram = []
     lines = open(text, "r").readlines()
     for line in lines:
@@ -65,10 +65,24 @@ def listogram(text):
     return listogram
 
 
+def tuplegram(text):
+    '''Takes in strings (single) words and provides a histogram using Tuples. '''
+    tuplegram = []
+    for word in text:
+        index = get_index(word, tuplegram)
+        if index == -1:
+            tuplegram.append((word, 1))
+        else:
+            update_count = tuplegram[index][1] + 1
+            tuplegram[index] = (word, update_count)
+    return tuplegram
+
+
 if __name__ == '__main__':
     words = get_all_words('book.txt')
-    histogram = hist(words)
-    print(repeated_words(histogram))
-    print(unique_words(histogram))
-    print(frequency("liberty", histogram))
+    print(hist(words))
+    # print(repeated_words(histogram))
+    # print(unique_words(histogram))
+    # print(frequency("liberty", histogram))
     # print(listogram('book.txt'))
+    # print(tuplegram(words))
