@@ -42,7 +42,7 @@ def frequency(word, histogram):
 
 
 def get_index(word, histogram):
-    '''Checks indicies to see where word is. Helper function for histograms using lists of lists and tuples.  '''
+    '''Checks indices to see where word is. Helper function for histograms using lists of lists and tuples.  '''
     current_index = 0
     for item in histogram:
         if item[0] == word:
