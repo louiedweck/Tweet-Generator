@@ -1,5 +1,6 @@
 from random import randint
 from histogram import get_all_words
+from histogram import listogram
 from histogram import get_index
 
 
@@ -8,18 +9,18 @@ class Listogram:
     def __init__(self, word_list):
         '''Initializes the listogram properties'''
 
-        self.word_list = word_list
+        self.word_list = get_all_words('book.txt')
 
-        self.list_histogram = self.build_listogram()
+        self.list_histogram = self.build_listogram(word_list)
 
         self.tokens = self.get_num_tokens()
         self.types = self.unique_words()
 
-    def build_listogram(self):
+    def build_listogram(self, word_list):
         '''Creates a histogram list of lists using the word_list property and returns it'''
 
         # TODO: use your listogram function as a starting point to complete this method
-        pass
+        return listogram(word_list)
 
     def get_num_tokens(self):
         '''gets the number of tokens in the listogram'''
@@ -32,7 +33,7 @@ class Listogram:
     def get_index(self, word, list_histogram):
         '''searches in the list histogram parameter and returns the index of the inner list that contains the word if present'''
         # TODO: use your get_index function as a starting point to complete this method
-        pass
+        # get_index(word, list_histogram)
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the list of lists histogram'''
@@ -51,6 +52,7 @@ class Listogram:
 
         # TODO: use your sample function as a starting point to complete this method
         # You will need to adapt it a little bit to work with listogram
+        pass
 
 
 def print_listogram(word_list):
@@ -112,3 +114,4 @@ def print_dictogram_samples(listogram):
 
 
 print_listogram(['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish'])
+# print(get_index('liberty', 'liberty'))

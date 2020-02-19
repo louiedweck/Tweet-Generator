@@ -11,7 +11,7 @@ class Dictogram:
 
         self.word_list = get_all_words('book.txt')
 
-        self.dictionary_histogram = self.build_dictogram()
+        self.dictionary_histogram = self.build_dictogram(word_list)
 
         self.tokens = sum(self.dictionary_histogram.values())
         self.types = self.unique_words()
@@ -31,13 +31,18 @@ class Dictogram:
     def unique_words(self):
         '''returns the number of unique words in the dictionary histogram'''
         # TODO: use your unique words function as a starting point to complete this method
-        return len(self.dictionary_histogram)
+        return len(self.dictionary_histogram.keys())
 
     def sample(self):
         '''Randomly samples from the dictionary histogram based on the frequency, returns a word'''
 
         # TODO: use your sample function as a starting point to complete this method
-        pass
+        pointer = randint(1, self.tokens)
+        count = 0
+        for word, value in self.dictionary_histogram.items():
+            count += value
+            if count >= pointer:
+                return word
 
 
 def print_dictogram(word_list):
