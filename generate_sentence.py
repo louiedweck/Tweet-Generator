@@ -3,12 +3,11 @@ from histogram import get_all_words
 from random import randint
 
 
-def sample(text):
+def sample(histogram):
     '''Randomly samples from the dictionary histogram based on the frequency, returns a word'''
 
     # TODO: use your sample function as a starting point to complete this method
-    histogram = hist(text)
-    pointer = randint(1, sum(histogram).values())
+    pointer = randint(1, sum(histogram.values()))
     count = 0
     for key, value in histogram.items():
         count += value

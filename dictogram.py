@@ -9,35 +9,32 @@ class Dictogram:
     def __init__(self, word_list):
         '''Initializes the dictogram properties'''
 
-        self.word_list = get_all_words('book.txt')
+        # self.word_list = get_all_words('book.txt')
 
         self.dictionary_histogram = self.build_dictogram(word_list)
-
-        self.tokens = sum(self.dictionary_histogram.values())
+        print(word_list, self.dictionary_histogram, sum(
+            self.dictionary_histogram.values()))
+        self.tokens = self.get_num_tokens()
         self.types = self.unique_words()
 
     def build_dictogram(self, word_list):
         '''Creates a histogram dictionary using the word_list property and returns it'''
-
-        # TODO: use your histogram function as a starting point to complete this method
-        # hist()
         return hist(word_list)
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the dictionary histogram'''
-        # TODO: use your frequency function as a starting point to complete this method
         return self.dictionary_histogram[word]
 
     def unique_words(self):
         '''returns the number of unique words in the dictionary histogram'''
-        # TODO: use your unique words function as a starting point to complete this method
         return len(self.dictionary_histogram.keys())
+
+    def get_num_tokens(self):
+        return sum(self.dictionary_histogram.values())
 
     def sample(self):
         '''Randomly samples from the dictionary histogram based on the frequency, returns a word'''
-
-        # TODO: use your sample function as a starting point to complete this method
-        pointer = randint(1, self.tokens)
+        pointer = randint(1, self.get_num_tokens())
         count = 0
         for word, value in self.dictionary_histogram.items():
             count += value

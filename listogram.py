@@ -18,8 +18,6 @@ class Listogram:
 
     def build_listogram(self, word_list):
         '''Creates a histogram list of lists using the word_list property and returns it'''
-
-        # TODO: use your listogram function as a starting point to complete this method
         listogram = []
         # lines = open('fish.txt', "r").readlines()
         # for line in lines:

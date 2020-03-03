@@ -1,4 +1,7 @@
 from dictogram import Dictogram
+from histogram import hist
+from generate_sentence import sample
+from random import choice
 
 
 class MarkovChain:
@@ -9,6 +12,7 @@ class MarkovChain:
         # Example: for "one fish two fish red fish blue fish"
         #{"one": {fish:1}, "fish": {"two":1, "red":1, "blue":1}, "two": {"fish":1}, "red": {"fish":1}, "blue": {"fish:1"}}
         self.markov_chain = self.build_markov(word_list)
+        print(self.markov_chain)
         self.first_word = list(self.markov_chain.keys())[0]
 
     def build_markov(self, word_list):
@@ -31,8 +35,13 @@ class MarkovChain:
         return markov_chain
 
     def walk(self, num_words):
-        # TODO: generate a sentence num_words long using the markov chain
-        pass
+        start_word = choice(list(self.markov_chain.keys()))
+        sentence_words = [start_word]
+        while len(sentence_words) < num_words:
+            last_word = sentence_words[-1]
+            new_word = self.markov_chain[last_word].sample()
+            sentence_words.append(new_word)
+        return ' '.join(sentence_words)
 
     def print_chain(self):
         for word, histogram in self.markov_chain.items():
@@ -41,5 +50,5 @@ class MarkovChain:
 
 markov_chain = MarkovChain(
     ["one", "fish", "two", "fish", "red", "fish", "blue", "fish"])
-markov_chain.print_chain()
-print(markov_chain.walk(10))
+
+print(markov_chain.walk(100))
