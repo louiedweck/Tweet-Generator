@@ -22,6 +22,15 @@ def hist(text):
     return histogram
 
 
+def get_num_tokens(self):
+    '''gets the number of tokens in the listogram'''
+
+    tokens = 0
+    for item in self.list_histogram:
+        tokens += item[1]
+    return tokens
+
+
 def repeated_words(histogram):
     '''Creates list of repeated words'''
     list_multiples = []
